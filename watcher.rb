@@ -36,9 +36,9 @@ class Watcher
 
   def notify_start(game, curr_turn)
     curr_player = @players[curr_turn["PlayerNumber"].to_s]
-    payload = "Civility bot started! Currently #{curr_player}'s turn"
-    puts "posting \n\n#{payload}\n\n to slack"
-    slack_post(payload)
+    puts "Civility bot started! Currently #{curr_player}'s turn"
+    # puts "posting \n\n#{payload}\n\n to slack"
+    # slack_post(payload)
   end
 
   def notify_turn_change(player_name)
@@ -51,7 +51,7 @@ class Watcher
     payload = {
       text: string,
       channel: "#civility",
-      username: "CivilityBot",
+      username: "Duenna",
       icon_emoji: ":robot:",
       parse: "full"
     }
@@ -76,7 +76,7 @@ class Watcher
 end
 
 license_key = ARGV[0]
-slack_post_url = ARGV[2]
+slack_post_url = ARGV[1]
 
 unless license_key && slack_post_url
   puts "usage: watcher.rb <GMR Key> <Slack URL>"
